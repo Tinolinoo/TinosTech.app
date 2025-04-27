@@ -63,26 +63,35 @@ Inicie o servidor local com npm run start.
 Acesse o aplicativo no navegador em http://localhost:3000.
 Conclusão
 O GreenTech é um projeto completo de e-commerce que combina tecnologias modernas e integrações úteis para oferecer uma experiência de usuário fluida e funcional. Ele é ideal para quem deseja explorar o desenvolvimento de aplicativos web responsivos com funcionalidades avançadas, como autenticação social e cálculo de frete.
+
+
 interface:
+
 ![image](https://github.com/user-attachments/assets/979fbdb5-71d7-4c98-8db3-44106dd5af3d)
 
 detalhes:
+
 ![image](https://github.com/user-attachments/assets/6be686fa-9603-4a31-8ad3-2351690f8524)
 
 buscar:
+
 ![image](https://github.com/user-attachments/assets/3501c1e3-a4e6-4cbe-b360-20bed22acd04)
 
 favoritos:
+
 ![image](https://github.com/user-attachments/assets/e75dbfdc-842d-4eca-900f-958c84d24a40)
 
 Carrinho:
+
 ![image](https://github.com/user-attachments/assets/404298c0-ee2a-4af1-a170-6db940877aea)
 
 frameworks:
+
 ![image](https://github.com/user-attachments/assets/76970f57-f189-4796-abf8-74b1e895c0b0)
 ![image](https://github.com/user-attachments/assets/35201f36-7f5d-4238-97ca-ecae764a933c)
 
 Login:
+
 ![image](https://github.com/user-attachments/assets/27783af3-64ad-4500-9037-e50e0f9a9135)
 
 
