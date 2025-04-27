@@ -1,5 +1,7 @@
 [output-metadata.json](https://github.com/user-attachments/files/19931164/output-metadata.json)
 [Uploa[Uploading app-debug-androidTest.apk…]()ding output-metadata.json…]()
+
+
 APK se localiza em : TinosTech app\app-main\android\app\build\outputs\apk\androidTest\debug
 
 GreenTech - E-commerce Application
