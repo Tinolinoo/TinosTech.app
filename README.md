@@ -90,9 +90,14 @@ frameworks:
 ![image](https://github.com/user-attachments/assets/76970f57-f189-4796-abf8-74b1e895c0b0)
 ![image](https://github.com/user-attachments/assets/35201f36-7f5d-4238-97ca-ecae764a933c)
 
-Login:
+Login(APi):
 
 ![image](https://github.com/user-attachments/assets/27783af3-64ad-4500-9037-e50e0f9a9135)
+
+APi Frete:
+
+![image](https://github.com/user-attachments/assets/261c743e-3d0e-454e-b7b4-703b8c91a204)
+
 
 
 
