@@ -1,0 +1,21 @@
+{
+  "name": "br.com.trabalho.greentech",
+  "displayName": "GreenTech",
+  "version": "1.0.0",
+  "description": "Aplicação e-commerce GreenTech",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./www -p 3000 -c-1",
+    "dev": "nodemon index.js",
+    "build": "npm run build:web",
+    "build:web": "mkdir -p www && xcopy .\\src .\\www /E /I /Y",
+    "serve": "http-server ./www -p 3000 -c-1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.3"
+  }
+}

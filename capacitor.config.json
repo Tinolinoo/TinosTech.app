@@ -1,0 +1,6 @@
+{
+  "appId": "com.tino.tinostech",
+  "appName": "TinosTech",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

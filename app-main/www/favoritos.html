@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Favoritos</title>
+
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/personalizado.css">
+    <!-- CSS para Favoritos -->
+    <link rel="stylesheet" href="css/favoritos.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/remixicons/remixicon.css">
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="favoritos" class="page">
+
+                <!-- Top Navbar -->
+                
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <!-- Lista de Favoritos -->
+                    <div id="listaFavoritos" class="list favoritos-list">
+                        <!-- Os produtos favoritados serão renderizados aqui -->
+                    </div>
+
+                    <!-- Mensagem de "Nenhum favorito" -->
+                    <div id="mensagemVazia" class="text-align-center color-gray" style="display: none;">
+                        <p>Nenhum produto favoritado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <!-- Script de Favoritos -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Função para carregar os favoritos
+            function carregarFavoritos() {
+                var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                var listaFavoritos = $("#listaFavoritos");
+                var mensagemVazia = $("#mensagemVazia");
+
+                // Limpa a lista antes de renderizar
+                listaFavoritos.empty();
+
+                if (favoritos.length > 0) {
+                    mensagemVazia.hide();
+                    favoritos.forEach(function (produto) {
+                        var itemHTML = `
+                            <div class="item-card">
+                                <div class="img-container">
+                                    <img src="${produto.imagem}" alt="${produto.nome}">
+                                </div>
+                                <div class="nome-rating">
+                                    <span class="nome-produto">${produto.nome}</span>
+                                    <span class="rating">${produto.rating}</span>
+                                </div>
+                                <div class="price">
+                                    <span>${produto.preco_promocional.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                                </div>
+                                <!-- Botão de remover favorito -->
+                                <button class="btn-remover-favorito" data-id="${produto.id}">
+                                    <i class="mdi mdi-heart-off"></i> Remover
+                                </button>
+                            </div>
+                        `;
+                        listaFavoritos.append(itemHTML);
+                    });
+                } else {
+                    mensagemVazia.show();
+                }
+            }
+
+            // Função para remover um produto dos favoritos
+            function removerFavorito(id) {
+                var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                favoritos = favoritos.filter(function (produto) {
+                    return produto.id != id;
+                });
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                carregarFavoritos(); // Recarrega a lista de favoritos
+
+                // Feedback visual ao remover
+                alert("Produto removido dos favoritos!");
+            }
+
+            // Adiciona evento de clique para remover favoritos
+            $(document).on('click', '.btn-remover-favorito', function () {
+                var id = $(this).attr('data-id');
+                removerFavorito(id);
+            });
+
+            // Carrega os favoritos ao abrir a página
+            carregarFavoritos();
+        });
+    </script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>

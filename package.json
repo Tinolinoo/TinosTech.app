@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "dev": "http-server ./app-main/www"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0"
+  }
+}

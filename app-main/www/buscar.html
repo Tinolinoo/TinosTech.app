@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2196f3">
+    <title>Buscar</title>
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <link rel="stylesheet" href="css/personalizado.css">
+    <link rel="stylesheet" href="css/buscar.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/remixicons/remixicon.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="view view-main">
+            <div data-name="buscar" class="page">
+                <!-- Top Navbar -->
+                
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <!-- Área de Busca -->
+                    <div class="search-container">
+                        <form id="formBusca" class="form-busca">
+                            <input id="campoBusca" type="text" placeholder="O que você procura?" class="campo-busca">
+                            <div class="search-button-container">
+                                <button type="submit" class="btn-buscar">
+                                    <i class="ri-search-2-line"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sugestões de Busca -->
+                    <div id="searchSuggestions" class="search-suggestions">
+                        <!-- Preenchido via JavaScript -->
+                    </div>
+
+                    <!-- Categorias Populares -->
+                    <div class="categories-section">
+                        <h2 class="section-title">Categorias Populares</h2>
+                        <div class="categories-grid">
+                            <div class="category-card">
+                                <i class="category-icon ri-shirt-line"></i>
+                                <div class="category-name">Roupas</div>
+                            </div>
+                            <div class="category-card">
+                                <i class="category-icon ri-smartphone-line"></i>
+                                <div class="category-name">Eletrônicos</div>
+                            </div>
+                            <div class="category-card">
+                                <i class="category-icon ri-home-smile-line"></i>
+                                <div class="category-name">Casa</div>
+                            </div>
+                            <div class="category-card">
+                                <i class="category-icon ri-basketball-line"></i>
+                                <div class="category-name">Esportes</div>
+                            </div>
+                            <div class="category-card">
+                                <i class="category-icon ri-gamepad-line"></i>
+                                <div class="category-name">Games</div>
+                            </div>
+                            <div class="category-card">
+                                <i class="category-icon ri-book-line"></i>
+                                <div class="category-name">Livros</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultados da Busca -->
+                    <div id="resultadosBusca" class="resultados-busca">
+                        <!-- Preenchido via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/framework7-bundle.min.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/busca.js"></script>
+    <script src="cordova.js"></script>
+</body>
+</html>

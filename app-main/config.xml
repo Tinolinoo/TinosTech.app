@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="br.com.trabalho.greentech" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>GreenTech</name>
+    <description>App trabalho Marcio</description>
+    <author email="vieiragabriel4501@gmail.com" href="https://cordova.apache.org">
+        Gabriel Justino
+        Victor Eduardo 
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>

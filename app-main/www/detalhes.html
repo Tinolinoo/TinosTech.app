@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Template Tab</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/index.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <!--Ícones Material remix icons Design-->
+    <link rel="stylesheet" href="css/remixicons/remixicon.css">
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="detalhes" class="page color-theme-blue">
+                <div class="toolbar toolbar-bottom">
+                    <div class="toolbar-inner display-flex align-items-center justify-content-center">
+                        <div class="flex-40 text-align-center">
+                            <span id="preco-detalhe" class="riscado color-grey">R$1400,00</span>
+                            <h3 id="precopromo-detalhe" class="princing no-padding no-margin">R$1200,00</h3>
+                        </div>
+                        <div class="flex-60">
+                            <button class="add-cart">Adicionar Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="prod-detail">
+                        <div class="buttons-top">
+                            <a href="/index/"><i class="ri-arrow-left-s-line"></i></a>
+                            <a href="#" class="btn-favoritar" data-id="${item.id}">
+                                <i class="ri-heart-3-line"></i>
+                            </a>
+                            <a href="#"><i class="ri-share-2-line"></i></a>
+                        </div>
+                        <img id="imagem-detalhe" src="img/default.png">
+                    </div>
+                    <div class="prod-content">
+                        <div class="block">
+                            <div class="line padding-top">
+                                <b id="nome-detalhe" class="margin-left">Nome do Produto</b>
+                                <button class="promo-btn">Promoção</button>
+                            </div>
+                            <div class="margin-top aling-items-center justify-content-start">
+                                <button class="margin-left btn-rates"><i class="mdi mdi-star"><span id="rating-detalhes">4.8</span></i></button>
+                                <button class="btn-rates"><i class="ri-thumb-up-fill"><span id="like-detalhe">90%</span></i></button>
+                                <span id="reviews-detalhe" class="color-grey">110 reviews</span>
+                            </div>
+                            <div class="display-flex aling-items-center justify-content-center">
+                                <p id="descricao-detalhe">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, tempore labore temporibus atque voluptatibus officia, maiores, nemo provident magni enim deleniti quidem! Eos distinctio fuga autem, omnis velit blanditiis accusamus.</p>
+                            </div>
+                            <table id="tabDetalhes">
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Detalhes</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <!-- Script de Favoritos -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Recupera o ID do produto salvo no localStorage
+            var id = parseInt(localStorage.getItem('detalhe'));
+
+            // Recupera a lista de produtos do localStorage
+            var produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+            // Encontra o produto com o ID correspondente
+            var item = produtos.find(function(produto) {
+                return produto.id === id;
+            });
+
+            // Se o produto for encontrado, exibe os detalhes
+            if (item) {
+                console.log('Produto encontrado: ', item);
+
+                // Preenche os detalhes do produto na página
+                $("#imagem-detalhe").attr('src', item.imagem);
+                $("#nome-detalhe").html(item.nome);
+                $("#rating-detalhe").html(item.rating);
+                $("#like-detalhe").html(item.likes);
+                $("#reviews-detalhe").html(item.reviews + ' reviews');
+                $("#descricao-detalhe").html(item.descricao);
+                $("#preco-detalhe").html(item.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+                $("#precopromo-detalhe").html(item.preco_promocional.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+
+                // Preenche a tabela de detalhes
+                var tabelaDetalhes = $("#tabDetalhes");
+                item.detalhes.forEach(function(detalhe) {
+                    var linha = `
+                        <tr>
+                            <td>${detalhe.caracteristica}</td>
+                            <td>${detalhe.detalhes}</td>
+                        </tr>
+                    `;
+                    tabelaDetalhes.append(linha);
+                });
+
+                // Atualiza o estado do coração ao carregar a página
+                atualizarEstadoFavorito(item.id);
+            } else {
+                console.log('Produto não encontrado');
+            }
+
+            // Função para favoritar/desfavoritar um produto
+            function favoritarProduto(id) {
+                var produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+                var produto = produtos.find(function(p) {
+                    return p.id == id;
+                });
+
+                var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                var index = favoritos.findIndex(function(p) {
+                    return p.id == id;
+                });
+
+                if (index === -1) {
+                    // Adiciona aos favoritos
+                    favoritos.push(produto);
+                    app.toast.create({
+                        text: 'Produto adicionado aos favoritos!',
+                        position: 'center',
+                        closeTimeout: 2000,
+                    }).open();
+                } else {
+                    // Remove dos favoritos
+                    favoritos.splice(index, 1);
+                    app.toast.create({
+                        text: 'Produto removido dos favoritos!',
+                        position: 'center',
+                        closeTimeout: 2000,
+                    }).open();
+                }
+
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                atualizarIconeFavoritos();
+                atualizarEstadoFavorito(id); // Atualiza o ícone do coração
+            }
+
+            // Função para atualizar o ícone do coração
+            function atualizarEstadoFavorito(id) {
+                var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                var isFavorito = favoritos.some(function(p) {
+                    return p.id == id;
+                });
+
+                if (isFavorito) {
+                    $(".btn-favoritar i").removeClass('ri-heart-3-line').addClass('ri-heart-fill');
+                } else {
+                    $(".btn-favoritar i").removeClass('ri-heart-fill').addClass('ri-heart-3-line');
+                }
+            }
+
+            // Função para atualizar o ícone de favoritos na barra inferior
+            function atualizarIconeFavoritos() {
+                var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                $(".tab-link[href='/favoritos/'] .ri-heart-3-line").attr('data-count', favoritos.length);
+            }
+
+            // Adiciona evento de clique para o botão de favoritar
+            $(".btn-favoritar").on('click', function(e) {
+                e.preventDefault(); // Evita o comportamento padrão do link
+                var id = $(this).attr('data-id');
+                favoritarProduto(id);
+            });
+        });
+    </script>
+    <script src="cordova.js"></script>
+</body>
+
+</html>

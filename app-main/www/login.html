@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="page">
+            <div class="page-content login-page">
+                <!-- Card de Login -->
+                <div id="login-section" class="login-card">
+                    <div class="login-header">
+                        <h1>Bem-vindo de volta!</h1>
+                        <p>Entre com sua conta para continuar</p>
+                    </div>
+
+                    <!-- Formulário de login por e-mail -->
+                    <form id="email-login-form" class="login-form">
+                        <div class="input-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" placeholder="Seu e-mail" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="password">Senha</label>
+                            <input type="password" id="password" placeholder="Sua senha" required>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+
+                        <button type="submit" class="login-button">
+                            Entrar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div class="divider">
+                        <span>ou continue com</span>
+                    </div>
+
+                    <!-- Container do botão do Google -->
+                    <div id="g_id_onload"
+    data-client_id="SUA_CLIENT_ID.apps.googleusercontent.com"
+    data-callback="handleCredentialResponse"
+    data-auto_prompt="false">
+</div>
+<div id="google-signin-button" class="g_id_signin" data-type="standard" data-theme="outline"></div>
+
+                    <!-- Mensagem de erro -->
+                    <div id="error-message" class="error-message"></div>
+                </div>
+
+                <!-- Seção do Usuário Logado -->
+                <div id="user-section" class="user-card" style="display: none;">
+                    <div class="user-header">
+                        <img id="user-photo" src="" alt="Foto do usuário" class="user-photo">
+                        <h2 id="user-name"></h2>
+                        <p id="user-email"></p>
+                    </div>
+                    
+                    <div class="user-actions">
+                        <button id="logout-button" class="logout-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                <polyline points="16 17 21 12 16 7"/>
+                                <line x1="21" y1="12" x2="9" y2="12"/>
+                            </svg>
+                            Sair da conta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/framework7-bundle.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

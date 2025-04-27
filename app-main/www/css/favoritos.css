@@ -1,0 +1,164 @@
+/* Estilo geral para a página de favoritos */
+body {
+    background-color: var(--gelo); /* Cor de fundo */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+#listaFavoritos {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Mensagem de favoritos vazios */
+#mensagemVazia {
+    text-align: center;
+    font-size: 18px;
+    color: grey;
+    margin-top: 50px;
+}
+
+/* Estilo para cada item de favorito */
+.item-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
+/* Imagem do produto */
+.item-card .img-container {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gelo);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item-card .img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* Nome e rating do produto */
+.item-card .nome-rating {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.item-card .nome-produto {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.item-card .rating {
+    font-size: 14px;
+    color: orange;
+}
+
+/* Preço do produto */
+.item-card .price {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+
+/* Botão de remover favorito */
+.btn-remover-favorito {
+    margin-top: 10px;
+    background-color: var(--vermelho); /* Cor de fundo vermelho */
+    color: var(--branco); /* Cor do texto */
+    border: 1px solid var(--vermelho); /* Borda com a mesma cor do fundo */
+    border-radius: 50px; /* Borda arredondada */
+    padding: 10px 20px; /* Ajuste de espaçamento interno */
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.btn-remover-favorito i {
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+/* Efeito ao passar o mouse */
+.btn-remover-favorito:hover {
+    background-color: var(--vermelho-escuro); /* Vermelho mais escuro */
+    border-color: var(--vermelho-escuro); /* Borda acompanha a cor de fundo */
+    transform: scale(1.05); /* Leve aumento no tamanho */
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .item-card {
+        width: calc(33.33% - 10px); /* 3 colunas */
+    }
+}
+
+@media (min-width: 992px) {
+    .item-card {
+        width: calc(25% - 10px); /* 4 colunas */
+    }
+}
+
+/* Estilo do botão de remover dos favoritos */
+.btn-remover-favorito {
+    background-color: #ff4d4d; /* Cor de fundo vermelha */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda */
+    padding: 8px 12px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    font-size: 14px; /* Tamanho da fonte */
+    margin-left: 10px; /* Margem à esquerda */
+    display: flex;
+    align-items: center;
+}
+
+.btn-remover-favorito i {
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+.btn-remover-favorito:hover {
+    background-color: #cc0000; /* Cor de fundo ao passar o mouse */
+}
+/* Estilo para o título "Favoritos" */
+.navbar .title {
+    color: var(--azul); /* Cor azul */
+    font-size: 24px; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    text-align: center; /* Centraliza o texto */
+    width: 100%; /* Ocupa toda a largura */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 10px 0; /* Espaçamento interno */
+}

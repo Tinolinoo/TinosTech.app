@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2196f3">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/remixicons/remixicon.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="view view-main">
+            <div data-name="pagamento" class="page">
+                <div class="nav-top">
+                    <a href="/carrinho/"><i class="ri-arrow-left-s-line"></i></a>
+                    <strong>Pagamento</strong>
+                </div>
+
+                <div class="page-content">
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a class="item-link item-content" href="#" onclick="mostrarPix()">
+                                    <div class="item-media">
+                                        <i class="ri-qr-code-line" style="font-size: 24px;"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Pagar com PIX</div>
+                                        <div class="item-after">Aprovação imediata</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item-link item-content" href="#" onclick="gerarBoleto()">
+                                    <div class="item-media">
+                                        <i class="ri-bank-card-line" style="font-size: 24px;"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Boleto Bancário</div>
+                                        <div class="item-after">Até 3 dias úteis</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Área PIX -->
+                    <div id="pixArea" class="display-none padding margin-top text-align-center">
+                        <div class="card">
+                            <div class="card-header">Pagamento via PIX</div>
+                            <div class="card-content">
+                                <div id="qrcode" class="margin-bottom"></div>
+                                <p class="margin-bottom">Chave PIX:</p>
+                                <div class="segmented">
+                                    <button class="button" onclick="copiarChavePix()">
+                                        <span id="chavePix">47306603825</span>
+                                        <i class="ri-file-copy-line margin-left"></i>
+                                    </button>
+                                </div>
+                                <p class="margin-top">Valor a pagar:</p>
+                                <h2 id="valorPix" class="margin-bottom"></h2>
+                                <p class="text-color-gray">Após o pagamento, você receberá a confirmação por e-mail</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Área Boleto -->
+                    <div id="boletoArea" class="display-none padding margin-top text-align-center">
+                        <div class="card">
+                            <div class="card-header">Boleto Bancário</div>
+                            <div class="card-content">
+                                <p>Valor a pagar:</p>
+                                <h2 id="valorBoleto" class="margin-bottom"></h2>
+                                <button class="button button-fill margin-bottom" onclick="baixarBoleto()">
+                                    Gerar Boleto
+                                    <i class="ri-download-line margin-left"></i>
+                                </button>
+                                <p class="text-color-gray">O boleto vence em 3 dias úteis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>
+    <script type="text/javascript" src="js/pagamento.js"></script>
+</body>
+</html>
